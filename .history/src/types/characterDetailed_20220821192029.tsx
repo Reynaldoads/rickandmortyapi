@@ -1,0 +1,3 @@
+type characterDetailed  = {
+    gender: string
+}
