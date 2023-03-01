@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useEffect } from 'react'
 import { Container, PagesContainer, BackToInit, Modal} from './styles'
 import Character  from '../../components/Character' 
@@ -14,10 +14,7 @@ export function Main() {
   const [status, setStatus] = useState('')
   const [name, setName] = useState('')
   const [showFieldsState, setFieldsState] = useState(false)
-  const backButton = document.querySelector('.back-button')
-  const charName = Array.from(document.querySelectorAll('p.character-name'))
-  
-  var characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pageState}&name=${name}`
+  const characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pageState}&name=${name}`
   
   const handleNextPage = () => {
     if(pageState === page?.pages){
@@ -38,12 +35,9 @@ export function Main() {
       setStatus(select.value)
     }
   }
-  const handleName = () => {
-    const inputText = document.querySelector('.input-name')
-    const inputValue:any = inputText?.getAttribute('value')
-    setName(inputValue)
+  const handleInputChange = (newText: string) => {
+    setName(newText);
   }
-  
   function showFilterName(){
     const clickFilter = document.querySelector('.click-filter')
     if( showFieldsState == true ) {
@@ -56,16 +50,10 @@ export function Main() {
   function handleInitPage(){
     setPageState(1)
   }
-
+  const isDisabled = useMemo(()=> pageState == 1, [pageState])
   useEffect(()=>{
-    if(pageState == 1) {
-      backButton?.setAttribute('disabled', '')
-    } else {
-      backButton?.removeAttribute('disabled')
-    }
       fetchCharacters(characterUrl)
       fetchPages()
-
     }, [pageState, status, name])
 
   return (
@@ -77,8 +65,8 @@ export function Main() {
           </li>
           <p className='click-filter' onClick={showFilterName}>{showFieldsState ? "Clique para esconder" : "Clique aqui para filtrar por nome" }</p>
           <li>
-            {showFieldsState && 
-              <FilterName showFields={showFieldsState} onClick={handleName}/>
+            { showFieldsState && 
+              <FilterName onChange={handleInputChange} inputValue={name} showFields={showFieldsState}/>
             }
           </li>
         </ul>
@@ -96,7 +84,9 @@ export function Main() {
         <p className='current-page'> Página atual: {pageState}</p>
       </div>
       <div className="button-box">
-        <button className='back-button' onClick={handlePrevPage}>Voltar</button>
+        <button className='back-button'
+          disabled={isDisabled}
+          onClick={handlePrevPage}>Voltar</button>
         <button onClick={handleNextPage}>Avançar</button>
         {pageState > 1 && <BackToInit onClick={handleInitPage}>Voltar ao inicio?</BackToInit> }
       </div>

@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import {Container } from './styles'
 
-type Props = {
-  onClick: React.MouseEventHandler<HTMLButtonElement>,
-  showFields: boolean
-}
+const Filter: React.FC<{
+  inputValue: string;
+  showFields: boolean;
+  onChange: (newText: string) => void;
+}> = ({inputValue, onChange, showFields}) => {
 
-function Filter(props:Props) {
-  const [state, setState] = useState('')
+  const [name, setName] = useState(inputValue)
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let newText = event.target.value;
+    setName(newText);
+    onChange(newText);
+  };
+
   return (
     <Container className='filter-name-container'>
-      <input className="input-name" value={state} onChange={(e) => setState(e.target.value)} type="text"/>
-      <button onClick={props.onClick}>Filtrar</button>        
+      <input className="input-name" value={name} onChange={handleInputChange} type="text"/>
     </Container>
   )
 }
