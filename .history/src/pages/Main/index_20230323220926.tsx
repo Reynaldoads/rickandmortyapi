@@ -56,7 +56,7 @@ export function Main() {
   useEffect(()=>{
       fetchCharacters(characterUrl)
       fetchPages()
-    }, [pageState, pagesAmount, status, name])
+    }, [pagesAmount, status, name])
 
   return (
     <Container>

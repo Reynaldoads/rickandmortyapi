@@ -43,23 +43,23 @@ export const Container = styled.header`
                 &:not(:last-child){
                     margin-right: 2rem;
                 }
-                
-                a {
+
+                a:visited {
                     color: #202329;
+
+                    &:hover {
+                        color: #fff;
+                    }
                 }
 
                 &:hover {
                     background-color: #202020;
                     transition: all .3s;
-
-                        a {
-                            color: #fff;
-                        }
-                    }
                 }
 
             }
         }
+    }
 
     img {
         width: 25rem;

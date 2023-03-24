@@ -46,6 +46,7 @@ export const Container = styled.header`
                 
                 a {
                     color: #202329;
+                    
                 }
 
                 &:hover {
@@ -60,6 +61,7 @@ export const Container = styled.header`
 
             }
         }
+    }
 
     img {
         width: 25rem;

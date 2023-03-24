@@ -15,7 +15,7 @@ export function Main() {
   const [name, setName] = useState('')
   const [showFieldsState, setFieldsState] = useState(false)
   
-  const characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pageState}&name=${name}`
+  const characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pagesAmount}&name=${name}`
   
   const handleNextPage = () => {
     if(pageState === page?.pages){
@@ -56,7 +56,7 @@ export function Main() {
   useEffect(()=>{
       fetchCharacters(characterUrl)
       fetchPages()
-    }, [pageState, pagesAmount, status, name])
+    }, [pagesAmount, status, name])
 
   return (
     <Container>

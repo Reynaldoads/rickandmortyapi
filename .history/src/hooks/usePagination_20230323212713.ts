@@ -18,7 +18,9 @@ const characterUrl = 'https://rickandmortyapi.com/api/character';
         setPage(data.info)
       } catch (error:any) {
         console.log(error.message);
+        
       }
+      
     }
     return {page, fetchPages}
   }

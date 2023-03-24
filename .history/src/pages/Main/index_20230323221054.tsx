@@ -9,7 +9,7 @@ import FilterName from '../../components/FilterName'
 
 export function Main() {
   var [pageState, setPageState] = useState(1)
-  const { characters, fetchCharacters, pagesAmount } = useRickFetch()
+  let { characters, fetchCharacters, pagesAmount } = useRickFetch()
   const {page, fetchPages} = usePagination()
   const [status, setStatus] = useState('')
   const [name, setName] = useState('')
@@ -21,7 +21,7 @@ export function Main() {
     if(pageState === page?.pages){
       return false
     }
-    setPageState( pageState += 1)
+    setPageState( pagesAmount += 1)
   }
   const handlePrevPage = () => {
     if(pageState === 1){
@@ -56,7 +56,7 @@ export function Main() {
   useEffect(()=>{
       fetchCharacters(characterUrl)
       fetchPages()
-    }, [pageState, pagesAmount, status, name])
+    }, [pagesAmount, status, name])
 
   return (
     <Container>

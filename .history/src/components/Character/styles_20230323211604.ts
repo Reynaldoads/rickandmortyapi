@@ -96,7 +96,7 @@ export const Container = styled.li`
                 margin-bottom: 0.5rem;
 
                 &.smallCharacterName {
-                    font-size: 2rem;
+                    font-size: 1.9rem;
                 }
             }
 

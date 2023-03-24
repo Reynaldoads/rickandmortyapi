@@ -8,8 +8,8 @@ import Filter from '../../components/Filter'
 import FilterName from '../../components/FilterName'
 
 export function Main() {
-  var [pageState, setPageState] = useState(1)
-  const { characters, fetchCharacters, pagesAmount } = useRickFetch()
+  const [pageState, setPageState] = useState(1)
+  const { characters, fetchCharacters } = useRickFetch()
   const {page, fetchPages} = usePagination()
   const [status, setStatus] = useState('')
   const [name, setName] = useState('')
@@ -56,7 +56,7 @@ export function Main() {
   useEffect(()=>{
       fetchCharacters(characterUrl)
       fetchPages()
-    }, [pageState, pagesAmount, status, name])
+    }, [pageState, status, name])
 
   return (
     <Container>
@@ -81,7 +81,7 @@ export function Main() {
      </ul> 
     <PagesContainer>
       <div className='p-box'>
-        <p className='page-number'> Total de páginas: {pagesAmount}</p>
+        <p className='page-number'> Número de paginas: {page?.pages}</p>
         <p className='current-page'> Página atual: {pageState}</p>
       </div>
       <div className="button-box">

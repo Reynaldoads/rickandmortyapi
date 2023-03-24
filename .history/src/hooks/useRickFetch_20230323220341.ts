@@ -7,13 +7,13 @@ import { useState } from 'react';
     async function fetchCharacters(url:string){
       try {
         const response = await fetch(url)
-        if (!response.ok) {
+        if(!response.ok) {
           throw new Error(response?.statusText)
         }
         const data = await response.json()
-        setPagesAmount(parseInt(data?.info?.pages))
-        setCharacters(data?.results)
-        // console.log(data?.info?.pages);
+        setPagesAmount(parseInt(data?.pages))
+        setCharacters(data.results)
+        console.log(pagesAmount);
       } catch(error:any) {
         console.log(error);
       }

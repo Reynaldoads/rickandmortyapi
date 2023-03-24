@@ -46,20 +46,21 @@ export const Container = styled.header`
                 
                 a {
                     color: #202329;
+
+                    &:hover, &:focus{
+                        color: #fff;
+                    }
                 }
 
                 &:hover {
                     background-color: #202020;
                     transition: all .3s;
-
-                        a {
-                            color: #fff;
-                        }
-                    }
+                    color: #fff;
                 }
 
             }
         }
+    }
 
     img {
         width: 25rem;

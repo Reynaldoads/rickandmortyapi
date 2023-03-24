@@ -13,7 +13,6 @@ type characterProps = {
 const Character: React.FC<characterProps> = ({char}) => {
 const [showModalState, setShowModalState] = useState(false)
 const completeName = char?.name.split(' ');
-
   return (
     <Container onKeyUp={(e)=>{
       if(e.key === "Escape" && showModalState){
@@ -23,7 +22,7 @@ const completeName = char?.name.split(' ');
 
       <img src={char.image}/>
       <div className='character-content'>
-          <p className={`character-name ${completeName.length >= 3 ? "smallCharacterName" : ""} `}>{char?.name}</p>
+          <p className={`character-name ${completeName.length >= 3 ? "smallCharacterName" : "regularName"} `}>{char?.name}</p>
           <span>
             <p className='title'>Status</p>
             <Status alive={char?.status}>{char?.status}</Status> 

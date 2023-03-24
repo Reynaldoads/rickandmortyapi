@@ -12,7 +12,6 @@ type characterProps = {
 
 const Character: React.FC<characterProps> = ({char}) => {
 const [showModalState, setShowModalState] = useState(false)
-const completeName = char?.name.split(' ');
 
   return (
     <Container onKeyUp={(e)=>{
@@ -20,16 +19,15 @@ const completeName = char?.name.split(' ');
         setShowModalState(false)
       } 
     }}>
-
       <img src={char.image}/>
       <div className='character-content'>
-          <p className={`character-name ${completeName.length >= 3 ? "smallCharacterName" : ""} `}>{char?.name}</p>
+          <p className="character-name">{char.name}</p>
           <span>
             <p className='title'>Status</p>
-            <Status alive={char?.status}>{char?.status}</Status> 
+            <Status alive={char.status}>{char.status}</Status> 
           </span>
           <div className='default-box'>
-            <p className='title'>Espécie <p className='status'>{char?.species}</p> </p>
+            <p className='title'>Espécie <p className='status'>{char.species}</p> </p>
             <button onClick={()=>{
               setShowModalState(true)
             }}>Detalhes</button>
@@ -39,12 +37,12 @@ const completeName = char?.name.split(' ');
         <Modal>
           <div className="modal-content">
             <FontAwesomeIcon onClick={()=> setShowModalState(false)} icon={faXmark} />
-            <img src={char?.image}/>
+            <img src={char.image}/>
             <div className="text-content">
-              <p><strong>Nome: </strong>{char?.name}</p> 
-              <p><strong>Gênero: </strong>{char?.gender}</p>            
-              <p><strong>Última aparição: </strong> {char?.location.name}</p>
-              <p><strong>Número de episódios:</strong> {char?.episode.length}</p>
+              <p><strong>Nome: </strong>{char.name}</p> 
+              <p><strong>Gênero: </strong>{char.gender}</p>            
+              <p><strong>Última aparição: </strong> {char.location.name}</p>
+              <p><strong>Número de episódios:</strong> {char.episode.length}</p>
             </div>
           </div>
         </Modal>

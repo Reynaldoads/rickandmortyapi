@@ -8,6 +8,8 @@ const characterUrl = 'https://rickandmortyapi.com/api/character';
         next: string,
         prev: string
     }>()
+    const [error, setError] = useState(null) 
+
     async function fetchPages(){
       try {
         const response = await fetch(characterUrl)
@@ -17,8 +19,9 @@ const characterUrl = 'https://rickandmortyapi.com/api/character';
         const data = await response.json()
         setPage(data.info)
       } catch (error:any) {
-        console.log(error.message);
+        setError(error.message)
       }
+      
     }
     return {page, fetchPages}
   }

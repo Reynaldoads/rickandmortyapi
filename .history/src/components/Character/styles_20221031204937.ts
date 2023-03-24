@@ -91,13 +91,9 @@ export const Container = styled.li`
                 }                
             }
             
-            .character-name {
+            p.character-name {
                 font-size:2.5rem;
                 margin-bottom: 0.5rem;
-
-                &.smallCharacterName {
-                    font-size: 2rem;
-                }
             }
 
             span {

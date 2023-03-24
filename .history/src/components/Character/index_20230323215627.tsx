@@ -23,7 +23,7 @@ const completeName = char?.name.split(' ');
 
       <img src={char.image}/>
       <div className='character-content'>
-          <p className={`character-name ${completeName.length >= 3 ? "smallCharacterName" : ""} `}>{char?.name}</p>
+          <p className={`character-name ${completeName.length > 2 ? "smallCharacterName" : ""} `}>{char?.name}</p>
           <span>
             <p className='title'>Status</p>
             <Status alive={char?.status}>{char?.status}</Status> 

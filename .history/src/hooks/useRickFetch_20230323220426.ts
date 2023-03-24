@@ -3,17 +3,17 @@ import { useState } from 'react';
 
  function useRickFetch(){
     const [characters, setCharacters] = useState<characterType[]>([]) 
-    const [pagesAmount, setPagesAmount] = useState<number>(0)
+    const [pagesAmount, setPagesAmount] = useState<number>(null)
     async function fetchCharacters(url:string){
       try {
         const response = await fetch(url)
-        if (!response.ok) {
+        if(!response.ok) {
           throw new Error(response?.statusText)
         }
         const data = await response.json()
-        setPagesAmount(parseInt(data?.info?.pages))
+        setPagesAmount(parseInt(data?.pages))
         setCharacters(data?.results)
-        // console.log(data?.info?.pages);
+        console.log(pagesAmount);
       } catch(error:any) {
         console.log(error);
       }

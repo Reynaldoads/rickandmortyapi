@@ -38,28 +38,27 @@ export const Container = styled.header`
                 border: 2px solid #202020;
                 transition: all .3s;
                 cursor: pointer;
-                background-color: transparent;
 
                 &:not(:last-child){
                     margin-right: 2rem;
                 }
-                
-                a {
+
+                a:visited {
                     color: #202329;
+
+                    &:hover {
+                        color: #fff;
+                    }
                 }
 
                 &:hover {
                     background-color: #202020;
                     transition: all .3s;
-
-                        a {
-                            color: #fff;
-                        }
-                    }
                 }
 
             }
         }
+    }
 
     img {
         width: 25rem;

@@ -7,18 +7,12 @@ const characterUrl = 'https://rickandmortyapi.com/api/character';
         pages: number,
         next: string,
         prev: string
-    }>()
+    }>() 
+
     async function fetchPages(){
-      try {
-        const response = await fetch(characterUrl)
-        if (!response.ok){
-          throw new Error(response.statusText)
-        }
-        const data = await response.json()
-        setPage(data.info)
-      } catch (error:any) {
-        console.log(error.message);
-      }
+      const response = await fetch(characterUrl)
+      const data = await response.json()
+      setPage(data.info)
     }
     return {page, fetchPages}
   }

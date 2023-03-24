@@ -11,9 +11,9 @@ import { useState } from 'react';
           throw new Error(response?.statusText)
         }
         const data = await response.json()
-        setPagesAmount(parseInt(data?.info?.pages))
+        setPagesAmount(parseInt(data?.pages))
         setCharacters(data?.results)
-        // console.log(data?.info?.pages);
+        console.log(data?.info?.pages);
       } catch(error:any) {
         console.log(error);
       }

@@ -18,7 +18,7 @@ export function Main() {
   const characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pageState}&name=${name}`
   
   const handleNextPage = () => {
-    if(pageState === page?.pages){
+    if(pageState === pagesAmount){
       return false
     }
     setPageState( pageState += 1)
@@ -56,7 +56,7 @@ export function Main() {
   useEffect(()=>{
       fetchCharacters(characterUrl)
       fetchPages()
-    }, [pageState, pagesAmount, status, name])
+    }, [pageState, status, name])
 
   return (
     <Container>
