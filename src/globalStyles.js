@@ -21,7 +21,5 @@ import { createGlobalStyle } from "styled-components";
     body  {
         font-family:"Roboto",  sans-serif;
     }
-
-
 `
 

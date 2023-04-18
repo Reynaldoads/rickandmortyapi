@@ -8,20 +8,25 @@ import Filter from '../../components/Filter'
 import FilterName from '../../components/FilterName'
 
 export function Main() {
-  var [pageState, setPageState] = useState(1)
+  var [pageState, setPageState] = useState<number>(1)
   const { characters, fetchCharacters, pagesAmount } = useRickFetch()
-  const {page, fetchPages} = usePagination()
+  const { fetchPages} = usePagination()
   const [status, setStatus] = useState('')
   const [name, setName] = useState('')
   const [showFieldsState, setFieldsState] = useState(false)
   
   const characterUrl =`https://rickandmortyapi.com/api/character?status=${status}&page=${pageState}&name=${name}`
   
+  const isNextDisabled = useMemo(()=>{
+    if(pageState === pagesAmount){
+      return true
+    }
+  }, [pageState, pagesAmount])
   const handleNextPage = () => {
-    if(pageState === page?.pages){
+    if(pageState >= pagesAmount){
       return false
     }
-    setPageState( pageState += 1)
+    setPageState( pageState += 1 )
   }
   const handlePrevPage = () => {
     if(pageState === 1){
@@ -51,7 +56,6 @@ export function Main() {
   function handleInitPage(){
     setPageState(1)
   }
-
   const isDisabled = useMemo(()=> pageState == 1, [pageState])
   useEffect(()=>{
       fetchCharacters(characterUrl)
@@ -88,7 +92,7 @@ export function Main() {
         <button className='back-button'
           disabled={isDisabled}
           onClick={handlePrevPage}>Voltar</button>
-        <button onClick={handleNextPage}>Avançar</button>
+        <button disabled={isNextDisabled} onClick={handleNextPage}>Avançar</button>
         {pageState > 1 && <BackToInit onClick={handleInitPage}>Voltar ao inicio?</BackToInit> }
       </div>
     </PagesContainer>

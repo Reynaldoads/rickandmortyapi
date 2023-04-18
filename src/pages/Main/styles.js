@@ -54,10 +54,6 @@ export const PagesContainer = styled.div`
 
         button:first-child {
             margin-right: 1rem;
-
-            &:disabled {
-                cursor: not-allowed;
-            }
         }
     }
 

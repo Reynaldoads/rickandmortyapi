@@ -13,7 +13,6 @@ import { useState } from 'react';
         const data = await response.json()
         setPagesAmount(parseInt(data?.info?.pages))
         setCharacters(data?.results)
-        // console.log(data?.info?.pages);
       } catch(error:any) {
         console.log(error);
       }

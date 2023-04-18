@@ -4,7 +4,7 @@ const characterUrl = 'https://rickandmortyapi.com/api/character';
  function usePagination(){
     const [page, setPage] = useState<{
         count: number,
-        pages: number,
+        pages: number | undefined,
         next: string,
         prev: string
     }>()
