@@ -77,7 +77,7 @@ export function Main() {
           </li>
         </ul>
       </nav>
-      {characters?.length == 0 && <h1>Não foi possível encontrar nenhum personagem</h1>}
+      {characters?.length == 0 && <h1>Não foi possível encontrar nenhum personagem.</h1>}
       <ul>
         {characters && characters.map((character) => (
           <Character showModal={false} key={character.id} char={character}/>
